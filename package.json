@@ -9,7 +9,7 @@
         "dist"
     ],
     "publishConfig": {
-        "registry": "https://npm.pkg.github.com/visiarch"
+        "registry": "https://registry.npmjs.org/"
     },
     "scripts": {
         "build": "rimraf dist && rollup -c",
@@ -23,7 +23,7 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/visiarch/admin-panel-layout.git"
+        "url": "https://github.com/visiarch/admin-panel-layout.git"
     },
     "author": "Gusti Bagus Suandana <visiarch@gmail.com>",
     "license": "MIT",
