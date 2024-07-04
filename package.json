@@ -1,6 +1,6 @@
 {
     "name": "@visiarch/admin-panel-layout",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "React Admin Panel Layout",
     "main": "dist/cjs/bundle.js",
     "module": "dist/esm/bundle.js",
