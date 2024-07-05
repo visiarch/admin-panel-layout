@@ -9,7 +9,7 @@ import React, {
  * The BaseLayoutType interface defines the shape of the context object
  * that is provided to components using the BaseLayoutProvider.
  */
-interface BaseLayoutType {
+export declare type BaseLayoutType = {
     /**
      * Indicates whether the sidebar is collapsed or not.
      */
@@ -20,13 +20,13 @@ interface BaseLayoutType {
      * @param isCollapsed - The new value of isCollapsed.
      */
     setIsCollapsed: (isCollapsed: boolean) => void;
-}
+};
 
 /**
  * The BaseLayout context is used to provide state and functionality related to the layout.
  * Components that need access to this state can use the BaseLayoutProvider component.
  */
-const BaseLayout = createContext<BaseLayoutType | undefined>(undefined);
+const BaseLayoutContext = createContext<BaseLayoutType | undefined>(undefined);
 
 /**
  * The BaseLayoutProvider component is used to provide the BaseLayout context to its children.
@@ -40,9 +40,9 @@ export const BaseLayoutProvider = ({ children }: PropsWithChildren) => {
 
     // Provide the BaseLayout context to the children with the current state.
     return (
-        <BaseLayout.Provider value={{ isCollapsed, setIsCollapsed }}>
+        <BaseLayoutContext.Provider value={{ isCollapsed, setIsCollapsed }}>
             {children}
-        </BaseLayout.Provider>
+        </BaseLayoutContext.Provider>
     );
 };
 
@@ -53,7 +53,7 @@ export const BaseLayoutProvider = ({ children }: PropsWithChildren) => {
  */
 export const useBaseLayout = () => {
     // Get the BaseLayout context from the useContext hook.
-    const context = useContext(BaseLayout);
+    const context = useContext(BaseLayoutContext);
 
     // Throw an error if the context is undefined, meaning that the component is not wrapped in a BaseLayoutProvider.
     if (!context) {

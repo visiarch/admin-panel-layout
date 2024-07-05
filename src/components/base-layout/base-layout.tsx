@@ -1,14 +1,16 @@
 import React, { PropsWithChildren, useState } from "react";
-import { PanelLeftClose, PanelLeftOpen } from "lucide-react";
-import { BaseLayoutProvider, useBaseLayout } from "./base-layout-context";
+import { MenuIcon, PanelLeftClose, PanelLeftOpen, XIcon } from "lucide-react";
+import { useBaseLayout } from "./base-layout-context";
 
-type Props = {
+export declare type Props = {
     topbarEnd?: React.ReactNode;
     sideMenu?: React.ReactNode;
     brand?: React.ReactNode;
     iconBrand?: React.ReactNode;
     closeIcon?: React.ReactNode;
     openIcon?: React.ReactNode;
+    iconCollapse?: React.ReactNode;
+    iconExpand?: React.ReactNode;
 };
 
 const BaseLayout = ({
@@ -19,6 +21,8 @@ const BaseLayout = ({
     closeIcon,
     openIcon,
     topbarEnd,
+    iconCollapse,
+    iconExpand,
 }: PropsWithChildren<Props>) => {
     const [isOpen, setIsOpen] = useState(false);
     const { isCollapsed, setIsCollapsed } = useBaseLayout();
@@ -47,7 +51,9 @@ const BaseLayout = ({
                                     <span className="sr-only">
                                         Collapse sidebar
                                     </span>
-                                    {isOpen ? closeIcon : openIcon}
+                                    {isOpen
+                                        ? closeIcon ?? <XIcon />
+                                        : openIcon ?? <MenuIcon />}
                                 </button>
                             </div>
                             <div className="flex items-center ms-auto gap-x-4">
@@ -86,14 +92,18 @@ const BaseLayout = ({
                                         className="hover:bg-gray-100 rounded bg-transparent p-1"
                                         onClick={() => setIsCollapsed(false)}
                                     >
-                                        <PanelLeftOpen className="w-5 h-5" />
+                                        {iconCollapse ?? (
+                                            <PanelLeftOpen className="w-5 h-5" />
+                                        )}
                                     </button>
                                 ) : (
                                     <button
                                         className="hover:bg-gray-100 rounded bg-transparent p-1"
                                         onClick={() => setIsCollapsed(true)}
                                     >
-                                        <PanelLeftClose className="w-5 h-5" />
+                                        {iconExpand ?? (
+                                            <PanelLeftClose className="w-5 h-5" />
+                                        )}
                                     </button>
                                 )}
                             </div>
@@ -108,10 +118,4 @@ const BaseLayout = ({
     );
 };
 
-const BaseLayoutWithProvider = (props: PropsWithChildren<Props>) => (
-    <BaseLayoutProvider>
-        <BaseLayout {...props} />
-    </BaseLayoutProvider>
-);
-
-export default BaseLayoutWithProvider;
+export default BaseLayout;

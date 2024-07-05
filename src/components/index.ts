@@ -25,4 +25,7 @@ export { default as BaseLayout } from "./base-layout";
  * @function
  * @return {{ isCollapsed: boolean, setIsCollapsed: (isCollapsed: boolean) => void }} An object containing the `isCollapsed` state and the `setIsCollapsed` function.
  */
-export { useBaseLayout } from "./base-layout/base-layout-context";
+export {
+    useBaseLayout,
+    BaseLayoutProvider,
+} from "./base-layout/base-layout-context";
