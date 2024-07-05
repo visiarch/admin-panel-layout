@@ -1,11 +1,16 @@
 /**
- * This file exports the default export from the `base-layout.tsx` file.
- * The `base-layout.tsx` file contains the base layout component that renders a layout with a sidebar and a main content area.
- * This file is used to export the `BaseLayout` component for use in other parts of the application.
+ * Export the default component from the `BaseLayout` file.
+ * This allows the component to be imported and used in other files.
  *
  * @module components/base-layout/index
- * @exports {React.ComponentType} default - The `BaseLayout` component.
+ * @exports {React.ComponentType<PropsWithChildren<Props>>} default - The default export, which is the `BaseLayout` component.
  */
 
-// Export the `BaseLayout` component as the default export
+/**
+ * The default export of the `BaseLayout` component.
+ * This component is the main layout component for the application.
+ *
+ * @component
+ * @returns {React.ReactElement} The rendered `BaseLayout` component.
+ */
 export { default } from "./base-layout";
